@@ -11,19 +11,22 @@
   <body>
     <div id="app"></div>
 
-    <script type='text/babel'>
-   	  var App = function() {
-   	  	return (
-   	  		<div className='App'>
-   	  			<h1 className='title'>
-   	  				FLASHBACK
-   	  			</h1>
-   	  			<p className='sub-title'>
-   	  				An interactive flashcard app.
-   	  			</p>
-   	  		</div>
-   	  	  );
-      };
+<script type='text/babel'>
+  var App = function() {
+    return (
+      <div className='App'>
+        <h1 className='title'>
+          FLASHBACK!
+        </h1>
+        <p className='sub-title'>
+          An interactive flashcard app.
+        </p>
+        <div className="card-list">
+        	{Card()}
+        </div>
+      </div>
+    );
+  };
 
   var Card = function() {
     return (
@@ -33,15 +36,14 @@
             You may know that React was created at _________.
           </h3>
           <p className='hint'>
-          	<span>Hint:</span> This company's site is known for being written in PHP.
+            <span>Hint:</span> This company's site is known for being written in PHP.
           </p>
         </div>
       </div>
     );
   };
 
-
-      ReactDOM.render(App(), document.getElementById('app'));
-    </script>
+  ReactDOM.render(App(), document.getElementById('app'));
+</script>
   </body>
 </html>
