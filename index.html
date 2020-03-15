@@ -13,7 +13,7 @@
 
 <script type='text/babel'>
 
-  var cardData = { 
+  class cardData = { 
     front: {
       question: 'You may know that React was created at _________.',
       hint: 'This company\'s site is known for being written in PHP.'
@@ -21,7 +21,7 @@
   };
 
 
-  var App = function() {
+  class App extends React.Component {
     return (
       <div className='App'>
         <h1 className='title'>
@@ -37,7 +37,7 @@
     );
   };
 
-  var Card = function(props) {
+  class Card = function(props) {
     return (
       <div className='Card -front'>
         <div className="front">
@@ -51,7 +51,7 @@
         </div>
       </div>
     );
-  };
+  }
 
   ReactDOM.render(App(), document.getElementById('app'));
 </script>
