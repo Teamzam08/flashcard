@@ -24,14 +24,14 @@ class App extends React.Component {
     };
   }
 
-   componentDidMount() {
-    const { cardData } = this.state;
-    const newCardData = [cardData[6], ...cardData.slice(0, 6)];
-    this.setState({ cardData: newCardData });
+  componentDidMount() {
+    this.setState({ cardData: cardData });
   }
 
   shuffleBackward = () => {
-    console.log('Shuffle Backward!');
+    const { cardData } = this.state;
+    const newCardData = [cardData[6], ...cardData.slice(0, 6)];
+    this.setState({ cardData: newCardData });
   }
 
   shuffleForward = () => {
