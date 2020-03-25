@@ -24,14 +24,17 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-  	this.setState({ cardData: cardData });
-
+   componentDidMount() {
+    this.setState({ cardData: cardData });
   }
 
-  	shuffleBackward = () => {
+  shuffleBackward = () => {
+    console.log('Shuffle Backward!');
+  }
 
-  	
+  shuffleForward = () => {
+    const { cardData } = this.state;
+    const newCardData = [cardData.slice(1)];
   }
 
   render() {
@@ -43,17 +46,18 @@ class App extends React.Component {
         <p className='sub-title'>
           An interactive flashcard app.
         </p>
-		<div className='card-list'>
-           {this.state.cardData.map((card, index) => <Card key={index} front={card.front} />)}
+        <div className='card-list'>
+          {this.state.cardData.map((card, index) => <Card key={index} front={card.front} />)}
         </div>
         <div className='buttons'>
-        	<button onClick={() => this.shuffleBackward()}>
-        		&lt;
-        	</button>
-        	<button>
-        		&gt;
-        	</button>
-      	</div>
+          <button onClick={() => this.shuffleBackward()}>
+            &lt;
+          </button>
+          <button onClick={() => this.shuffleForward()}>
+            &gt;
+          </button>
+        </div>
+      </div>
     );
   }
 }
