@@ -50,7 +50,7 @@ class App extends React.Component {
           An interactive flashcard app.
         </p>
         <div className='card-list'>
-          {this.state.cardData.map((card, index) => <Card key={index} front={card.front} />)}
+          {this.state.cardData.map((card, index) => <Card key={index} index={index} front={card.front} back={card.back} />)}
         </div>
         <div className='buttons'>
           <button onClick={() => this.shuffleBackward()}>
@@ -66,9 +66,25 @@ class App extends React.Component {
 }
 
 class Card extends React.Component {
+  constructor() {
+  	super();
+  	this.state = {
+  		flipped: false
+  	};
+  }
+
+  flipCard = () => {
+  	if (this.props.index === 0) {
+  		this.setState({ flipped: !this.state.flipped });
+  	}
+  }
+
+  cardClass = () => this.state.flipped ? 'Card -back' : 'Card -front';
+
   render() {
     return (
-      <div className='Card -front'>
+      <div className={this.cardClass()} onClick={() => this.flipCard()}>
+        {!this.state.flipped ?
         <div className="front">
           <h3 className='question'>
             {this.props.front.question}
@@ -77,7 +93,20 @@ class Card extends React.Component {
             <span>Hint:</span> {this.props.front.hint}
           </p>
         </div>
-      </div>
+        :
+        <div className='back'>
+        	<div className='image'>
+    			<img src={this.props.back.image} />
+  			</div>
+  			<h3 className='answer'>
+    			{this.props.back.answer}
+  			</h3>
+  			<p className='description'>
+    			{this.props.back.description}
+  			</p>
+        	</div>
+        }
+      	</div>
     );
   }
 }
